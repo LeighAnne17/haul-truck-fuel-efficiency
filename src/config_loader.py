@@ -14,7 +14,7 @@ class PipelineConfig:
     def _load_yaml(self) -> dict:
         """Reads the raw configuration file safely."""
         if not os.path.exists(self.config_path):
-            logger.error("Configuration file missing at: {self.config_path}")
+            logger.error(f"Configuration file missing at: {self.config_path}")
             raise FileNotFoundError(f"Missing setup configuration file: {self.config_path}")
 
         try:
