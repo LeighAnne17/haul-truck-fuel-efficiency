@@ -38,7 +38,7 @@ class HaulTruckAnomalyDetector:
         mean_mapped = route_stats.transform("mean")
         std_mapped = route_stats.transform("std")
 
-        self.df["Route_Fuel_ZScore"] = (self.df["Fuel_Efficiency_km_per_L"] - mean_mapped) / std_mapped.replace(0, np.ma)
+        self.df["Route_Fuel_ZScore"] = (self.df["Fuel_Efficiency_km_per_L"] - mean_mapped) / std_mapped.replace(0, np.nan)
         self.df["Route_Fuel_ZScore"] = self.df["Route_Fuel_ZScore"].fillna(0.0)
 
         self.df["ZScore_Anomaly"] = (self.df["Route_Fuel_ZScore"] < -3.0).astype(int)
