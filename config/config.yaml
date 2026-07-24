@@ -1,0 +1,24 @@
+#--------------------------------------------------------------------
+# Haul Truck Fuel Efficiency Analytics Pipeline Configuration
+#--------------------------------------------------------------------
+
+paths: 
+  input_data: "./data/haul_truck_fuel_efficiency.csv"
+  output_data: "./data/processed_fleet_insights.csv"
+  visuals_dir: "./visuals"
+  log_file: "./pipeline_execution.log"
+
+financials:
+  fuel_cost_per_litre_usd: 1.15
+
+anomaly_detection:
+  zscore_threshold: -3.0
+  isolation_forest:
+    contamination_rate: 0.02
+    random_state: 42
+    features:
+      - "Fuel_Litres"
+      - "Distance_km"
+      - "Idle_Minutes"
+      - "Specific_Fuel_Consumption"
+      - "Idling_Ratio"
